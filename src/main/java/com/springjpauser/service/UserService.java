@@ -2,6 +2,7 @@ package com.springjpauser.service;
 
 import com.springjpauser.dto.*;
 import com.springjpauser.entity.User;
+import com.springjpauser.exception.UserNotFoundException;
 import com.springjpauser.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -56,7 +57,7 @@ public class UserService {
     @Transactional(readOnly = true)
     public UserGetResponse getOne(Long userId) {
         User user = userRepository.findById(userId).orElseThrow(
-                () -> new IllegalStateException("없는 유저입니다.")
+                () -> new UserNotFoundException("없는 유저입니다.")
         );
         return new UserGetResponse(
                 user.getId(),
@@ -71,7 +72,7 @@ public class UserService {
     @Transactional
     public UserUpdateResponse update(Long userId, UserUpdateRequest request) {
         User user = userRepository.findById(userId).orElseThrow(
-                () -> new IllegalStateException("없는 유저입니다.")
+                () -> new UserNotFoundException("없는 유저입니다.")
         );
         user.update(
                 request.getName(), 
@@ -93,7 +94,7 @@ public class UserService {
         boolean existence = userRepository.existsById(userId);
         // 존재하지 않으면
         if (!existence) {
-            throw new IllegalStateException("없는 유저입니다.");
+            throw new UserNotFoundException("없는 유저입니다.");
         }
 
         // 존재하면

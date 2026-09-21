@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
 
     // 🎯 커스텀 비즈니스 예외 처리
-    @ExceptionHandler(IllegalStateException.class)
-    public ResponseEntity<String> handleIllegalStateException(IllegalStateException e) {
+    @ExceptionHandler(ServiceException.class)
+    public ResponseEntity<String> handleServiceException(ServiceException ex) {
         return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
-                .body("요청 오류: " + e.getMessage());
+                .status(ex.getStatus())
+                .body(ex.getMessage());
     }
 }
