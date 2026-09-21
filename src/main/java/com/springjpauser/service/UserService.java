@@ -28,7 +28,9 @@ public class UserService {
                 savedUser.getId(),
                 savedUser.getName(),
                 savedUser.getEmail(),
-                savedUser.getAddress()
+                savedUser.getAddress(),
+                savedUser.getCreatedAt(),
+                savedUser.getModifiedAt()
         );
     }
 
@@ -42,7 +44,9 @@ public class UserService {
                     user.getId(),
                     user.getName(),
                     user.getEmail(),
-                    user.getAddress()
+                    user.getAddress(),
+                    user.getCreatedAt(),
+                    user.getModifiedAt()
             );
             dtos.add(dto);
         }
@@ -58,7 +62,9 @@ public class UserService {
                 user.getId(),
                 user.getName(),
                 user.getEmail(),
-                user.getAddress()
+                user.getAddress(),
+                user.getCreatedAt(),
+                user.getModifiedAt()
         );
     }
 
@@ -76,7 +82,9 @@ public class UserService {
                 user.getId(),
                 user.getName(),
                 user.getEmail(),
-                user.getAddress()
+                user.getAddress(),
+                user.getCreatedAt(),
+                user.getModifiedAt()
         );
     }
 
