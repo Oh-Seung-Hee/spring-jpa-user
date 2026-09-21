@@ -2,6 +2,7 @@ package com.springjpauser.controller;
 
 import com.springjpauser.dto.*;
 import com.springjpauser.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class UserController {
 
     @PostMapping("/users")
     public ResponseEntity<UserSaveResponse> saved(
-            @RequestBody UserSaveRequest request
+            @Valid @RequestBody UserSaveRequest request
             ) {
         return ResponseEntity.ok(userService.save(request));
     }
