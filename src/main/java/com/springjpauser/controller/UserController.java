@@ -4,12 +4,14 @@ import com.springjpauser.dto.*;
 import com.springjpauser.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 public class UserController {
@@ -26,6 +28,7 @@ public class UserController {
     //전체 조회
     @GetMapping("/users")
     public ResponseEntity<List<UserGetResponse>> getAll() {
+        log.info("hello");
         return ResponseEntity.ok(userService.getAll());
     }
 
