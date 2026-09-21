@@ -53,12 +53,4 @@ public class UserController {
     ) {
         userService.delete(userId);
     }
-
-    // 🚨 예외 처리 메서드
-    @ExceptionHandler(IllegalStateException.class)
-    public ResponseEntity<String> handlerIllegalStateException(IllegalStateException e) {
-        return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
-                .body("요청 오류: " + e.getMessage());
-    }
 }
