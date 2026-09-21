@@ -4,6 +4,7 @@ import com.springjpauser.dto.*;
 import com.springjpauser.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,5 +52,13 @@ public class UserController {
             @PathVariable Long userId
     ) {
         userService.delete(userId);
+    }
+
+    // 🚨 예외 처리 메서드
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<String> handlerIllegalStateException(IllegalStateException e) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body("요청 오류: " + e.getMessage());
     }
 }
