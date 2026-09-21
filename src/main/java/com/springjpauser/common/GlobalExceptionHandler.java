@@ -1,4 +1,4 @@
-package com.springjpauser.Common;
+package com.springjpauser.common;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
